@@ -1,12 +1,12 @@
 import { Box, Typography, TextField, Fab, Divider } from "@mui/material";
 import React from "react";
-import { blue, grey } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 import AddIcon from "@mui/icons-material/Add";
 
 import { useState, useContext } from "react";
 import { TodoContext } from "./Context";
 
-const ariaLabel = { "aria-label": "description" };
+ 
 const Additem = () => {
   const todostate = useContext(TodoContext);
 

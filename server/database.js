@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const { version } = require("os");
 
-const uri = "mongodb://127.0.0.1:27017/todo";
-console.log("url of the database", uri);
+// const uri =  "mongodb+srv://muhammadhammad:hammad221133@mernstack.prqxf.mongodb.net/?retryWrites=true&w=majority&appName=MernStack";
+// console.log("url of the database", uri);
 
 //  const option = {
 //     serverApi: {
@@ -23,7 +23,7 @@ let client;
 const connectToMongoDB = async () => {
   if (!client) {
     try {
-      client = await mongoose.connect(uri, {
+      client = await mongoose.connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
