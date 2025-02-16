@@ -20,10 +20,10 @@ const { version } = require("os");
 
 let client;
 
-const connectToMongoDB = async () => {
+const connectToMongoDB = async (uri) => {
   if (!client) {
     try {
-      client = await mongoose.connect(process.env.MONGODB_URI, {
+      client = await mongoose.connect(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });

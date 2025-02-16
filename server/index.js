@@ -12,11 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const router = require("./router");
 
 app.use("/api", router);
+app.get("/",(req,res)=>{
+   res.status(201).json({message: "request success"})
+})
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
+const uri=process.env.MONGODB_URI;
 
 const startServer = async () => {
-  await connectToMongoDB();
+  await connectToMongoDB(uri);
 
   app.listen(port, () => {
     console.log(`server listening at port no ${port}`);
