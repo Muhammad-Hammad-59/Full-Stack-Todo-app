@@ -17,7 +17,11 @@ import { useState, useEffect, useContext } from "react";
 import { TodoContext } from "./Context";
 import DoneIcon from "@mui/icons-material/Done";
 
+// const uri=process.env.REACT_APP_API_URL;
+
 const Todolist = () => {
+ console.log(`backend uri link:`)
+
   const [open, setOpen] = useState(false);
   const [updatevalue, setUpdatevalue] = useState({
     value: "",
@@ -72,7 +76,7 @@ const Todolist = () => {
   useEffect(() => {
     const gettodos = async () => {
       try {
-        const response = await fetch("/api/todo");
+        const response = await fetch(`/api/todo`);
 
         if (!response.ok) {
           throw new Error("Network response was not ok");

@@ -1,6 +1,15 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
+import cors from "cors";
+
+ 
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,  
+    methods: "GET,POST,PUT,DELETE",                 
+  })
+);
 
 const app = express();
 const { connectToMongoDB } = require("./database");
@@ -15,6 +24,10 @@ app.use("/api", router);
 app.get("/",(req,res)=>{
    res.status(201).json({message: "request success"})
 })
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', timestamp: new Date() });
+});
 
 const port = process.env.PORT || 5000;
 const uri=process.env.MONGODB_URI;

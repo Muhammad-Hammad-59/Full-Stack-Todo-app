@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://16.171.39.6:5000/",
+  "proxy": "http://fullstacktodo-els-1277213571.eu-north-1.elb.amazonaws.com",
   "eslintConfig": {
     "extends": [
       "react-app",
