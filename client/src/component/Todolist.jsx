@@ -17,10 +17,10 @@ import { useState, useEffect, useContext } from "react";
 import { TodoContext } from "./Context";
 import DoneIcon from "@mui/icons-material/Done";
 
-// const uri=process.env.REACT_APP_API_URL;
+const uri=process.env.REACT_APP_API_URL;
 
 const Todolist = () => {
- console.log(`backend uri link:`)
+ console.log(`backend uri link:${uri}`)
 
   const [open, setOpen] = useState(false);
   const [updatevalue, setUpdatevalue] = useState({
@@ -33,7 +33,7 @@ const Todolist = () => {
     const index = updatevalue.itemindex;
     const id = todosstate.alltodos[index]._id;
     try {
-      const response = await fetch(`/api/todo/${id}`, {
+      const response = await fetch(`${uri}/api/todo/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const Todolist = () => {
   useEffect(() => {
     const gettodos = async () => {
       try {
-        const response = await fetch(`/api/todo`);
+        const response = await fetch(`${uri}/api/todo`);
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -99,7 +99,7 @@ const Todolist = () => {
     todosstate.alltodos[index].done = done ? false : true;
 
     try {
-      const response = await fetch(`/api/todo/${id}`, {
+      const response = await fetch(`${uri}/api/todo/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -131,7 +131,7 @@ const Todolist = () => {
     newlist.splice(index, 1);
     todosstate.setAlltodos(newlist);
     try {
-      const response = await fetch(`/api/todo/${id}`, {
+      const response = await fetch(`${uri}/api/todo/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
