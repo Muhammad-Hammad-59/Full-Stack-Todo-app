@@ -3,16 +3,18 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require ("cors")
 
- 
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,  
-    methods: "GET,POST,PUT,DELETE",                 
-  })
-);
 
 const app = express();
 const { connectToMongoDB } = require("./database");
+const forntendurl=process.env.FRONTEND_URL
+console.log(`frontend url: ${forntendurl}`)
+
+app.use(
+ cors({
+   origin: process.env.FRONTEND_URL,  
+   methods: "GET,POST,PUT,DELETE",                 
+ })
+);
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -26,7 +28,7 @@ app.get("/",(req,res)=>{
 })
 
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'OK', timestamp: new Date() });
+  res.status(200).json({ message: "server is running health check", status: 'OK'});
 });
 
 const port = process.env.PORT || 5000;
