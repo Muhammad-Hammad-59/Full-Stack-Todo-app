@@ -15,7 +15,7 @@ const Additem = () => {
   const handlenewtodo = (e) => {
     todostate.setInputvalue(e.target.value);
   };
-
+  const uri=process.env.REACT_APP_API_URL;
   const sendpostreq = async () => {
     try {
       const value = todostate.inputvalue;
@@ -24,7 +24,7 @@ const Additem = () => {
         setError(true);
         return;
       }
-      const response = await fetch("/api/todo", {
+      const response = await fetch(`${uri}/api/todo`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
